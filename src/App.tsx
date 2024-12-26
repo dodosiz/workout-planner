@@ -1,5 +1,10 @@
-function App() {
-  return <div>Hello World</div>;
-}
+import { Container } from "@mui/material";
+import { ExerciseSelect } from "./components/ExerciseSelect";
 
-export default App;
+export function App() {
+  return (
+    <Container>
+      <ExerciseSelect id={1} />
+    </Container>
+  );
+}
