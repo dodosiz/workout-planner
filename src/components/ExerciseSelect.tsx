@@ -6,7 +6,7 @@ import {
   REST_CATEGORY_ID,
 } from "../data/categories";
 import { MultiSelect } from "./Multiselect";
-import { EXERCISES } from "../data/exercises";
+import { EXERCISES, STANDARD_UNITS } from "../data/excercises/all";
 import { getUnitId } from "../data/units";
 
 interface ExerciseSelectProps {
@@ -45,12 +45,11 @@ export function ExerciseSelect(props: ExerciseSelectProps) {
   };
   const getUnits = () => {
     const exercise = EXERCISES.find((exercise) => exercise.id === exerciseId);
-    return exercise
-      ? exercise.units.map((unitType) => ({
-          value: getUnitId(unitType),
-          label: unitType,
-        }))
-      : [];
+    const units = exercise && exercise.units ? exercise.units : STANDARD_UNITS;
+    return units.map((unitType) => ({
+      value: getUnitId(unitType),
+      label: unitType,
+    }));
   };
   return (
     <Grid container spacing={2} marginTop={"10px"}>
